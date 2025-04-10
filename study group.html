@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyHub - Learn & Collaborate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #005f73;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .resources {
+      background: #e0fbfc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .resources ul {
+      list-style-type: none;
+    }
+
+    .resources li {
+      padding: 5px 0;
+    }
+
+    .chat-section {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    #chat-box {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      background-color: #fafafa;
+      margin-bottom: 10px;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chat-input input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      padding: 10px 15px;
+      border: none;
+      background: #008891;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background: #005f73;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 10px;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📘 StudyHub</h1>
+    <p>Learn together, grow together.</p>
+  </header>
+
+  <main>
+    <section class="resources">
+      <h2>📚 Study Resources</h2>
+      <ul>
+        <li>📝 Notes and PDFs</li>
+        <li>🎥 Video Lectures</li>
+        <li>🧠 Practice Quizzes</li>
+        <li>💬 Group Discussions</li>
+      </ul>
+    </section>
+
+    <section class="chat-section">
+      <h2>💬 Live Group Chat</h2>
+      <div id="chat-box"></div>
+      <div class="chat-input">
+        <input type="text" id="username" placeholder="Your name" />
+        <input type="text" id="message-input" placeholder="Type your message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 StudyHub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function sendMessage() {
+      const username = document.getElementById('username').value.trim();
+      const message = document.getElementById('message-input').value.trim();
+
+      if (!username || !message) {
+        alert('Please enter both a name and a message.');
+        return;
+      }
+
+      const chatBox = document.getElementById('chat-box');
+
+      const messageElement = document.createElement('div');
+      messageElement.innerHTML = `<strong>${username}</strong>: ${message}`;
+      chatBox.appendChild(messageElement);
+
+      // Scroll to the bottom
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      // Clear message input
+      document.getElementById('message-input').value = '';
+    }
+  </script>
+
+</body>
+</html>
